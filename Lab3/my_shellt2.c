@@ -181,7 +181,7 @@ int main(int argc, char* argv[]) {
 		}
        	if(strcmp(tokens[0],"exit")==0)
    			 {
-   			      exitf(tokens,0);
+   			      exitf(tokens);
   		  }
 
                if (strcmp(tokens[0],"cd")==0)
