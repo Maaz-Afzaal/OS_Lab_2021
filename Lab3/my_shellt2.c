@@ -66,8 +66,11 @@ int arr(char** tokens){
 void background(char** parsed)
 {
     // Forking a child
-    pid_t pid = fork();
-	exitf(parsed,pid);
+	pid_t pidl[128];
+	int pidindex=-1;
+	pidindex=pidindex++;
+   	pid_t pid = fork();
+	pidl[pidindex]=pid;
     if (pid == -1) {
         printf("\nFailed forking child..");
         return;
@@ -81,12 +84,13 @@ void background(char** parsed)
         return;
     }
 }
-void exitf(char** tokens,int pid){
-if(strcmp(tokens[0],"exit")==0)
-   			 {
-   			 kill(pid,SIGKILL);
-   		     exit(0);
-  		  }
+void exitf(char** tokens){
+	int tmp,i;
+	for(i=0;i<=pidindex,i++){
+		tmp=pidl[i];
+		kill(tmp,SIGKILL);
+   		    
+  		  } exit(0);
 }
 void execArgs(char** tokens)
 {
