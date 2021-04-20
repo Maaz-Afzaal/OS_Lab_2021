@@ -90,8 +90,8 @@ pid_t pid1;
 	for(k=0;k<=i,k++){
 pid1=hisl[k];
    kill(pid1,SIGKILL);
-   exit(0);
-	}
+	}exit(0);
+	
   		  
 }
 void execArgs(char** tokens)
