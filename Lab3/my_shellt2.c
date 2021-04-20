@@ -13,6 +13,8 @@
 /* Splits the string by space and returns the array of tokens
 *
 */
+int hisl[128];
+int i;
 void IORedirect(char **args, int k, int ioMode)
 {
     pid_t pid, wpid;
@@ -67,7 +69,8 @@ void background(char** parsed)
 {
     // Forking a child
     pid_t pid = fork();
-	exitf(parsed,pid);
+	hisl[i]=pid;
+	i++;
     if (pid == -1) {
         printf("\nFailed forking child..");
         return;
@@ -81,12 +84,15 @@ void background(char** parsed)
         return;
     }
 }
-void exitf(char** tokens,int pid){
-if(strcmp(tokens[0],"exit")==0)
-   			 {
-   			 kill(pid,SIGKILL);
-   		     exit(0);
-  		  }
+void exitf(char** tokens){
+int k;
+pid_t pid1;
+	for(k=0;k<=i,k++){
+pid1=hisl[k];
+   kill(pid1,SIGKILL);
+   exit(0);
+	}
+  		  
 }
 void execArgs(char** tokens)
 {
@@ -181,7 +187,7 @@ int main(int argc, char* argv[]) {
 		}
        	if(strcmp(tokens[0],"exit")==0)
    			 {
-   			      exitf(tokens,0);
+   			      exitf(tokens);
   		  }
 
                if (strcmp(tokens[0],"cd")==0)
