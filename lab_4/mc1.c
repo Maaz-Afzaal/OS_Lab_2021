@@ -25,7 +25,7 @@ int main(int argc, char const *argv[]){
      }
 
    total_point=atoll(argv[1])/NUM_THREAD;
-   srand(time(NULL));
+   srand(time(NULL)); //to prevent same position of points
    static int i;
    
    
@@ -46,7 +46,7 @@ int main(int argc, char const *argv[]){
    pc= (int*)param;
    int i;
    for(i=0; i<total_point;i++){
-       double x= (double)rand()/(double)RAND_MAX;
+       double x= (double)rand()/(double)RAND_MAX;//RAND_MAX is a constant whose default value may vary between implementations but it is granted to be at least 32767
        double y=(double)rand()/(double)RAND_MAX;
        double r= sqrt(x*x+y*y);
        if(r<=1) *pc=*pc+1;
