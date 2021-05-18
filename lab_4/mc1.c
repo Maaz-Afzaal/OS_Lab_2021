@@ -4,7 +4,7 @@
 #include <math.h>
 #include <pthread.h>
 
-#define NUM_THREAD 2
+#define NUM_THREAD 1
 int *pc;
 void* circle_point(void *param);
 pthread_t tid[NUM_THREAD]={0};
